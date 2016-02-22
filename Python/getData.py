@@ -31,14 +31,14 @@ def importFile(path):
     regex = re.escape(string.punctuation)
     result = re.sub("["+regex+"]"," ",file)
     result = re.sub("["+string.whitespace+"]+",",",result)
-    return result.encode("utf-8")
+    return result
 
 def tokenize(path1,path2):
     file1 = importFile(path1).split(",")
     file2 = importFile(path2).split(",")
     words = filter(lambda x: x in file2,file1)
     words = list(set(words))
-    words = map(lambda x: x.decode("utf-8"),words)
+    #words = map(lambda x: x.decode("utf-8"),words)
     return words
 
 def getData(words,name):
@@ -47,18 +47,18 @@ def getData(words,name):
         #Make request
         google.request_report(word, hl='dk', geo="DK", date="01/2010 60m")
         #Get data as csv
-        google.save_csv("../data/", name+word)
+        google.save_csv("../data/"+name+"/",word)
         time.sleep(randint(2, 10))
+
+
+#getData(["æøå"],"")
+pwords = tokenize("../data/p1.txt","../data/p2.txt")
+hpvwords = tokenize("../data/HPV1.txt","../data/HPV2.txt")
 
 print "Talking with google. This takes time!"
 google_username = "cmollgaard2"
 google_password = "password123!\"#"
 google = pyGTrends(google_username, google_password)
 
-getData(["æøå"],"")
-pwords = tokenize("../data/p1.txt","../data/p2.txt")
-hpvwords = tokenize("../data/HPV1.txt","../data/HPV2.txt")
-
-
-#getData(pwords,"p")
-#getData(hpvwords,"HPV")
+getData(pwords,"p")
+getData(hpvwords,"HPV")
