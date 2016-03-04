@@ -1,32 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4165e7ed-82e6-4fd4-8533-ff575e2dab63" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Python/handle data.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/P/5.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/P/alvorlig.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/P/alvorlige.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/P/blodforgiftning.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/P/børn.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/P/forårsaget.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/P/gang.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/P/gives.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/P/infektioner.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/P/meningitis.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/P/pneumokoksygdom.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/P/pneumokokvaccinen.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/P/temp.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/P/typer.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/P/vaccination.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/P/vaccinen.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/P/år.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/p1.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/p1.txt.tokens.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/p2.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Python/getData.py" afterPath="$PROJECT_DIR$/Python/getData.py" />
-    </list>
+    <list default="true" id="4165e7ed-82e6-4fd4-8533-ff575e2dab63" name="Default" comment="" />
     <ignored path="Ws.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -70,8 +45,8 @@
           <file leaf-file-name="getData.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Python/getData.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.28421053">
-                  <caret line="80" column="15" selection-start-line="80" selection-start-column="15" selection-end-line="80" selection-end-column="15" />
+                <state vertical-scroll-proportion="0.6421053">
+                  <caret line="94" column="13" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="13" />
                   <folding />
                 </state>
               </provider>
@@ -559,8 +534,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Python/getData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28421053">
-          <caret line="80" column="15" selection-start-line="80" selection-start-column="15" selection-end-line="80" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.6421053">
+          <caret line="94" column="13" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="13" />
           <folding />
         </state>
       </provider>
