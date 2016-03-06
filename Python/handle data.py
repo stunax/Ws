@@ -47,24 +47,24 @@ def split_data(data,i,size,splitsize):
 
 
 def cross_valid(data,target,name ,size =12,folder=5):
-    results = np.empty((folder,data.shape[1]))
-    for i in range(folder):
-        local_data,local_data_test = split_data(data,i,size,folder)
-        local_target, local_target_test = split_data(target,i,size,folder)
-        if name == "HPV" or name == "MFR"  :
-            model = linear_model.LassoCV(cv=20)
-            model.fit(local_data, local_target)
-            results[i] = np.array(model.coef_)
-        else:
-            clf = linear_model.LinearRegression(fit_intercept = True)
-            clf.fit(local_data, local_target)
-            results[i] = np.array(clf.coef_)
-    return np.mean(results,axis= 0)
 
-def rmse(coef,data,target,name):
-    inner = (np.sum(coef[None,:] * data,1) - target)**2
-    outer = math.sqrt(np.sum(inner)/target.size)
-    return outer
+    model = linear_model.LassoCV(cv=5,positive=True)
+    model.fit(data, target)
+    lassores = model
+    #Other models!
+    #No other used.
+
+
+    result = lassores #+ other models
+    return result,
+
+def rmse(models,data,target,name):
+    result = ()
+    for model in models:
+        inner =  np.array((model.predict(data) - target)**2)
+        outer = math.sqrt(np.sum(inner)/target.shape[0])
+        result += outer,
+    return result
 
 def main(name, target_name = ""):
     words,dates,data = import_csv("../data/" + name + "dat.csv")
@@ -74,8 +74,8 @@ def main(name, target_name = ""):
 
     for vac, target in target_data:
         print vac
-        coefs = cross_valid(data,target,name)
-        res = rmse(coefs,data,target,name)
+        models = cross_valid(data,target,name)
+        res = rmse(models,data,target,name)
         print res
 
 
@@ -88,6 +88,6 @@ def main(name, target_name = ""):
 
 if __name__ == '__main__':
     main("HPV")
-    #main("PCV","PVC")
+    main("PCV","PVC")
     main("DiTe")
-    #main("MFR","MMR")
+    main("MFR","MMR")
