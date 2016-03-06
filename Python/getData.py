@@ -29,7 +29,7 @@ def save_csv(path,data,words,months):
     result = "month," + ",".join(words)
     for i in range(len(months)):
         result += "\n" + months[i]
-        for j in range(len(data[0])):
+        for j in range(words.size):
             result += "," + str(data[i,j])
     with open(path, 'w+') as f:
         f.write(result)
@@ -65,7 +65,7 @@ def importFile(path):
     file = read_file(path)
     file = " ".join(filter(lambda x: x not in stop_words,file.split()))
     regex = re.escape(string.punctuation)
-    result = re.sub("["+regex+"]"," ",file)
+    result = re.sub("["+regex+"0-9]"," ",file)
     result = re.sub("["+string.whitespace+"]+",",",result)
     return result
 
@@ -78,12 +78,13 @@ def tokenize(path1,path2):
     return words
 
 def getData(words,name):
-    months = 72
-    result = np.empty((months,len(words)),np.int)
+    monthsnum = 60
+    result = np.empty((monthsnum,len(words)),np.int)
+    dont_skip = np.repeat(True,len(words))
     for i,word in enumerate(words):
         print "Handling word: " + word
         #Make request
-        google.request_report(word, hl='dk', geo="DK", date="01/2010 "+str(months+1)+"m")
+        google.request_report(word, hl='dk', geo="DK", date="01/2011 "+str(monthsnum+1)+"m")
         #Get data as csv
         google.save_csv("../data/"+name+"/","temp")
         with open("../data/"+name+"/temp.csv") as f:
@@ -95,20 +96,26 @@ def getData(words,name):
         wordfile = map(lambda x: x[0] + "," + x[1],wordfile)
         if len(wordfile) == 0:
             #If file is empty, don't crash
-            result[i] = 0
+            dont_skip[i] = False
+            #result[i] = 0
             continue
         #If weekly data, convert to monthly.
-        wordfile = onlymonths(wordfile,months)
+        wordfile = onlymonths(wordfile,monthsnum)
+        if len(wordfile) > 0:
+            months = wordfile
         wordfilenum = map(lambda x: x.split(",")[1],wordfile)
         result[:,i] = np.array(wordfilenum)
         time.sleep(randint(2, 10))
-    months = map(lambda x: x.split(",")[0],wordfile)
+    words = np.array(words)[dont_skip]
+    months = map(lambda x: x.split(",")[0],months)
+    result = result[:,dont_skip]
     return (result,words,months)
 
 def main(text1,text2,name):
     words = tokenize(text1,text2)
     data = getData(words,name)
     save_csv("../data/" + name + "dat.csv",data[0],data[1],data[2])
+    print "done with " + name
 
 
 #getData(["æøå"],"")
@@ -131,6 +138,6 @@ google = pyGTrends(google_username, google_password)
 
 if __name__ == '__main__':
     main("../data/MFR1.txt","../data/MFR2.txt","MFR")
-    main("../data/DiTe1.txt","../data/DiTe2.txt","DiTe")
-    main("../data/HPV1.txt","../data/HPV2.txt","HPV")
-    main("../data/PCV1.txt","../data/PCV2.txt","PCV")
+    #main("../data/DiTe1.txt","../data/DiTe2.txt","DiTe")
+    #main("../data/HPV1.txt","../data/HPV2.txt","HPV")
+    #main("../data/PCV1.txt","../data/PCV2.txt","PCV")
