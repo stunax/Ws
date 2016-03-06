@@ -136,6 +136,6 @@ if __name__ == '__main__':
     google_password = "password123!\"#"
     google = pyGTrends(google_username, google_password)
     main("../data/MFR1.txt","../data/MFR2.txt","MFR",google)
-    main("../data/DiTe1.txt","../data/DiTe2.txt","DiTe",google)
+    #main("../data/DiTe1.txt","../data/DiTe2.txt","DiTe",google)
     main("../data/HPV1.txt","../data/HPV2.txt","HPV",google)
-    main("../data/PCV1.txt","../data/PCV2.txt","PCV",google)
+    #main("../data/PCV1.txt","../data/PCV2.txt","PCV",google)

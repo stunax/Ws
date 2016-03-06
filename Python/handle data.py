@@ -88,6 +88,6 @@ def main(name, target_name = ""):
 
 if __name__ == '__main__':
     main("HPV")
-    main("PCV","PVC")
-    main("DiTe")
+    #main("PCV","PVC")
+    #main("DiTe")
     main("MFR","MMR")
