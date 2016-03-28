@@ -5,6 +5,7 @@ import numpy as np
 import csv
 import codecs
 import json
+from sklearn.cross_validation import KFold
 
 customSplit = u"\t||\t"
 
@@ -56,10 +57,48 @@ def readCustomDat(path):
     data = np.array(data[0:-1])
     return data
 
+def strtocsv(data,delimiter = "\t"):
+    result = ""
+    for row in data:
+        cols = str(row[0])
+        for col in xrange(1,len(row)):
+            cols += str(delimiter) + str(row[col])
+        result += "\n" + cols
+
+    return result
+
+def convert(x):
+    if x == "-1":
+        return "negative"
+    if x == "1":
+        return "positive"
+    return "neutral"
+
+def preprocess(data):
+    newDat = [(x[1],convert(x[0])) for x in data]
+    newDat = np.array(newDat)
+    return newDat
+
+def prepDatForNer(data):
+    fold = KFold(data.shape[0], n_folds=3,shuffle=True)
+    data = preprocess(data)
+    current = 0
+    for train_index, test_index in fold:
+        pathtrain = "../nlpdat/traindat" + str(current) + ".tsv"
+        pathtest = "../nlpdat/testdat" + str(current) + ".tsv"
+        #with codecs.open(pathtrain,"wb+",encoding = "utf-8") as f:
+        with open(pathtrain,"wb+") as f:
+            asstring = strtocsv(data[train_index])
+            f.write(asstring)
+        with open(pathtest,"wb+") as f:
+            asstring = strtocsv(data[test_index])
+            f.write(asstring)
+        current += 1
+
+
 
 
 if __name__ == "__main__":
     data = readData("../Data/truth.tsv")
     saveCSV(data,"../Data/truth2.tsv")
-    dat = readCustomDat("../Data/truth2.tsv")
-    print dat
+    prepDatForNer(data)

@@ -25,18 +25,6 @@ def load_classifier():
         f.close()
     return results
 
-def convert(x):
-    if x == "-1":
-        return "negative"
-    if x == "1":
-        return "positive"
-    return "neutral"
-
-def preprocess(data):
-    newDat = [(x[1],convert(x[0])) for x in data]
-    newDat = np.array(newDat)
-    return newDat
-
 def fold3(data):
     #Missing last, missing middle, missing first part
     fold = KFold(data.shape[0], n_folds=3,shuffle=True)
