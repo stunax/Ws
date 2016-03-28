@@ -1,6 +1,6 @@
 # location of the training file
 #trainFile = ../nlpdat/traindat0.tok.tsv
-trainFile = ../nlpdat/traindat0.tsv
+trainFile = ../nlpdat/traindat0.tok
 # location where you would like to save (serialize) your
 # classifier; adding .gz at the end automatically gzips the file,
 # making it smaller, and faster to load
