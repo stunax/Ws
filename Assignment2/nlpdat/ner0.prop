@@ -3,7 +3,7 @@ trainFile = ../nlpdat/testdat0.tok.tsv
 # location where you would like to save (serialize) your
 # classifier; adding .gz at the end automatically gzips the file,
 # making it smaller, and faster to load
-serializeTo = ner-model0.ser.gz
+serializeTo = ../nlpdat/ner-model0.ser.gz
 
 # structure of your training file; this tells the classifier that
 # the word is in column 0 and the correct answer is in column 1

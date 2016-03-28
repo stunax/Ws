@@ -6,6 +6,7 @@ import csv
 import codecs
 import json
 from sklearn.cross_validation import KFold
+import string
 
 customSplit = u"\t||\t"
 
@@ -60,11 +61,12 @@ def readCustomDat(path):
 def strtocsv(data,delimiter = "\t"):
     result = ""
     for row in data:
-        cols = str(row[0])
-        for col in xrange(1,len(row)):
-            cols += str(delimiter) + str(row[col])
+        cols = str(row[0]) + str(delimiter) + str(row[1])
+        #for col in xrange(1,len(row)):
+        #    cols += str(delimiter) + str(row[col])
         result += "\n" + cols
-
+    result = result.translate(string.maketrans("",""), string.punctuation)
+    result = result.lower()
     return result
 
 def convert(x):
