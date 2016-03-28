@@ -60,10 +60,12 @@ def readCustomDat(path):
 
 def strtocsv(data,delimiter = "\t"):
     result = ""
-    for row in data:
-        cols = str(row[0]) + str(delimiter) + str(row[1])
-        #for col in xrange(1,len(row)):
-        #    cols += str(delimiter) + str(row[col])
+    for i in xrange(data.shape[0]):
+        if len(data[i].shape) == 0:
+            continue
+        cols = str(data[i,0]) #+ str(delimiter) + str(row[1])
+        for j in xrange(1,data.shape[1]):
+            cols += str(delimiter) + str(data[i,j])
         result += "\n" + cols
     result = result.translate(string.maketrans("",""), string.punctuation)
     result = result.lower()
@@ -93,7 +95,7 @@ def prepDatForNer(data):
             asstring = strtocsv(data[train_index])
             f.write(asstring)
         with open(pathtest,"wb+") as f:
-            asstring = strtocsv(data[test_index])
+            asstring = strtocsv(data[test_index,0])
             f.write(asstring)
         current += 1
 
