@@ -61,12 +61,14 @@ def readCustomDat(path):
 def strtocsv(data,delimiter = "\t"):
     result = ""
     for i in xrange(data.shape[0]):
-        if len(data[i].shape) == 0:
+        if len(data.shape) == 1:
+            cols = str(data[i]).translate(string.maketrans("",""), string.punctuation)
             continue
         cols = str(data[i,0]).translate(string.maketrans("",""), string.punctuation) #+ str(delimiter) + str(row[1])
         for j in xrange(1,data.shape[1]):
             cols += str(delimiter) + str(data[i,j])
         result += "\n" + cols
+    #print result
     result = result.lower()
     return result
 
