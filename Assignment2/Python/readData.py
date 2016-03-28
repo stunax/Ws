@@ -63,11 +63,10 @@ def strtocsv(data,delimiter = "\t"):
     for i in xrange(data.shape[0]):
         if len(data[i].shape) == 0:
             continue
-        cols = str(data[i,0]) #+ str(delimiter) + str(row[1])
+        cols = str(data[i,0]).translate(string.maketrans("",""), string.punctuation) #+ str(delimiter) + str(row[1])
         for j in xrange(1,data.shape[1]):
             cols += str(delimiter) + str(data[i,j])
         result += "\n" + cols
-    result = result.translate(string.maketrans("",""), string.punctuation)
     result = result.lower()
     return result
 
