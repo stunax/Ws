@@ -3,9 +3,9 @@
 
 #fold 0
 java -cp "*" edu.stanford.nlp.process.PTBTokenizer '../nlpdat/testdat0.tsv' > '../nlpdat/testdat0.tok'
-perl -ne 'chomp; print "$_\tO\n"' '../nlpdat/testdat0.tok' > '../nlpdat/testdat0.tok.tsv'
+#perl -ne 'chomp; print "$_\tO\n"' '../nlpdat/testdat0.tok' > '../nlpdat/testdat0.tok.tsv'
 java -cp "*" edu.stanford.nlp.process.PTBTokenizer '../nlpdat/traindat0.tsv' > '../nlpdat/traindat0.tok'
-perl -ne 'chomp; print "$_\tO\n"' '../nlpdat/traindat0.tok' > '../nlpdat/traindat0.tok.tsv'
+#perl -ne 'chomp; print "$_\tO\n"' '../nlpdat/traindat0.tok' > '../nlpdat/traindat0.tok.tsv'
 java -cp "*" edu.stanford.nlp.ie.crf.CRFClassifier -prop ../nlpdat/ner0.prop
 java -cp "*" edu.stanford.nlp.ie.crf.CRFClassifier -loadClassifier ../nlpdat/ner-model0.ser.gz -testFile ../nlpdat/testdat0.tok.tsv > ../nlpdat/res0.txt
 
