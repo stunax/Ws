@@ -3,10 +3,10 @@
 
 #fold 0
 #java -cp "../stanford-corenlp-full-2015-12-09/*" edu.stanford.nlp.process.PTBTokenizer 'testdat0.tsv' > 'testdat0.tok'
-java -cp "../stanford-corenlp-full-2015-12-09/*" edu.stanford.nlp.sentiment.BuildBinarizedDataset 'testdat0.tsv' > 'testdat0.tok'
+java -cp "../stanford-corenlp-full-2015-12-09/*" edu.stanford.nlp.sentiment.BuildBinarizedDataset  -input 'testdat0.tsv' > 'testdat0.tok'
 #perl -ne 'chomp; print "$_\tO\n"' 'testdat0.tok' > 'testdat0.tok.tsv'
 #java -cp "../stanford-corenlp-full-2015-12-09/*" edu.stanford.nlp.process.PTBTokenizer 'traindat0.tsv' > 'traindat0.tok'
-java -cp "../stanford-corenlp-full-2015-12-09/*" edu.stanford.nlp.sentiment.BuildBinarizedDataset 'traindat0.tsv' > 'traindat0.tok'
+java -cp "../stanford-corenlp-full-2015-12-09/*" edu.stanford.nlp.sentiment.BuildBinarizedDataset  -input 'traindat0.tsv' > 'traindat0.tok'
 #perl -ne 'chomp; print "$_\tO\n"' 'traindat0.tok' > 'traindat0.tok.tsv'
 #java -cp "../stanford-corenlp-full-2015-12-09/*" edu.stanford.nlp.ie.crf.CRFClassifier -prop ner0.prop
 #java -cp "../stanford-corenlp-full-2015-12-09/*" edu.stanford.nlp.ie.crf.CRFClassifier -loadClassifier ner-model0.ser.gz -testFile testdat0.tok.tsv > res0.txt
