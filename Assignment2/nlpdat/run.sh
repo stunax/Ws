@@ -7,9 +7,24 @@ buildbin(){
 	while read p; do
 		#echo $p
   		echo $p > $3
+  		read p
+  		read p
+  		echo $p >> $3
+  		read p
+  		read p
+  		echo $p >> $3
+  		read p
+  		read p
+  		echo $p >> $3
+  		read p
+  		read p
+  		echo $p >> $3
+  		read p
+  		read p
+  		echo $p >> $3
+  		read p
+  		read p
   		java -Xms5g -cp "../stanford-corenlp-full-2015-12-09/*" edu.stanford.nlp.sentiment.BuildBinarizedDataset -input $3 >> $2
-  		read p
-  		read p
 	done <$1
 }
 
