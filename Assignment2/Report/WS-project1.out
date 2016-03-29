@@ -4,5 +4,8 @@
 \BOOKMARK [2][-]{subsection.2.2}{Textblob sentiment}{section.2}% 4
 \BOOKMARK [2][-]{subsection.2.3}{Stanford recursive deep learning for sentiment analysis}{section.2}% 5
 \BOOKMARK [1][-]{section.3}{Findings}{}% 6
-\BOOKMARK [1][-]{section.4}{Conclusions}{}% 7
-\BOOKMARK [1][-]{section.5}{References}{}% 8
+\BOOKMARK [2][-]{subsection.3.1}{Textblob based}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Stanford coreNLP}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.3}{External sentiment calculator}{section.3}% 9
+\BOOKMARK [1][-]{section.4}{Conclusions}{}% 10
+\BOOKMARK [1][-]{section.5}{References}{}% 11

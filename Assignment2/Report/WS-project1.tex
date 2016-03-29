@@ -69,9 +69,21 @@ Before the Textblob model could be trained, the data had to go through some extr
 The data is then split using Numpys\cite{numpy} Kfold function to prepare for 3 fold validation. The model is then trained using the three data subsets provided by the Kfold function, and then tested using the test subsets provided by the same Kfold call.
 
 \subsection{Stanford recursive deep learning for sentiment analysis}
+This sections has not been comleted
+
 
 \section{Findings}
+Looking at the data, it can be observed, that 55.89\% of the data is positive. So naively guessing that everything as positive, would yield this approximate result, assuming the data we have represents the data.
 
+\subsection{Textblob based}
+Textblob only manages to match the baseline approximated above. There is close to no preprocessing done on the data, so there is a high probability that this can be improved.
+\subsection{Stanford coreNLP}
+No completed model
+
+\subsection{External sentiment calculator}
+I started out by measuring how a normal not product related sentiment analyser worked, i used uClassify\cite{uClassify} combined with it's python api\cite{uClassifyp}. 
+
+Using this the result is slightly better than the Textblob based one, with a 60\% success. This is mostly due to the fact, that most of the result is ignored and treated as neutral. The reason for this is, that some reviews may be negative or positive, but not towards the product.
 
 \section{Conclusions}
 

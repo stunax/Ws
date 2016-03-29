@@ -32,6 +32,10 @@ def readData(path):
                 text.append(tex)
     comb = np.column_stack((sent, text))
     print actamount, "out of", orgamount, "is kept"
+    pos = np.sum(comb[:,0] == "1")
+    neg = np.sum(comb[:,0] == "-1")
+    neu = np.sum(comb[:,0] == "0")
+    print pos,neu,neg
     return comb
 
 
@@ -86,6 +90,13 @@ def convert(x):
         return "positive"
     return "neutral"
 
+def convert2(x):
+    if x == "-1":
+        return "1"
+    if x == "1":
+        return "4"
+    return "3"
+
 def preprocess(data):
     newDat = [(x[1],convert(x[0])) for x in data]
     newDat = np.array(newDat)
@@ -93,7 +104,7 @@ def preprocess(data):
 
 def prepDatForNer(data):
     fold = KFold(data.shape[0], n_folds=3,shuffle=True)
-    data = np.array(data)#preprocess(data)
+    data = np.array([(convert2(x[0]),x[1]) for x in data])#preprocess(data)
     current = 0
     for train_index, test_index in fold:
         pathtrain = "../nlpdat/traindat" + str(current) + ".tsv"

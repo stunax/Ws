@@ -18,9 +18,6 @@ def defineResult(data, cut):
         if float(data[i][2][1][1]) >= cut:
             if data[i][2][1][0] == u"positive":
                 result[i] = 1
-
-            if data[i][2][1][0] == u"negative":
-                result[i] = -1
     return result
 
 
