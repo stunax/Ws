@@ -92,10 +92,10 @@ def convert(x):
 
 def convert2(x):
     if x == "-1":
-        return "1"
+        return "0"
     if x == "1":
         return "4"
-    return "3"
+    return "2"
 
 def preprocess(data):
     newDat = [(x[1],convert(x[0])) for x in data]
