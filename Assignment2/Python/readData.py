@@ -6,10 +6,12 @@ import csv
 import codecs
 import json
 from sklearn.cross_validation import KFold
-import string
+import sys
 
 customSplit = u"\t||\t"
 
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 def readData(path):
     sent = []
@@ -74,7 +76,7 @@ def strtocsv(data,delimiter = " "):
         #    cols += str(delimiter) + str(data[i,j])
         result += "\n\n" + cols
     #print result
-    result = result.lower().decode(errors="ignore")
+    result = result.lower().encode("utf-8",errors='ignore')
     return result
 
 def convert(x):
