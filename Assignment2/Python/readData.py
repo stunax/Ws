@@ -64,12 +64,12 @@ def readCustomDat(path):
     return data
 
 def strtocsv(data,delimiter = " "):
-    result = ""
-    for i in xrange(data.shape[0]):
+    result = str(data[0,0]) + str(delimiter) + str(data[0,1])
+    for i in xrange(1,data.shape[0]):
         if len(data.shape) == 1:
             result += "\n" + str(data[i]) #.translate(string.maketrans("",""), string.punctuation)
             continue
-        cols = str(data[i,0]) + str(delimiter) + str(data[i,1]) #.translate(string.maketrans("",""), string.punctuation) #+ str(delimiter) + str(row[1])
+        cols =   str(data[i,0]) + str(delimiter) + str(data[i,1])#.translate(string.maketrans("",""), string.punctuation) #+ str(delimiter) + str(row[1])
         #for j in xrange(1,data.shape[1]):
         #    cols += str(delimiter) + str(data[i,j])
         result += "\n\n" + cols
@@ -98,10 +98,10 @@ def prepDatForNer(data):
         pathtest = "../nlpdat/testdat" + str(current) + ".tsv"
         #with codecs.open(pathtrain,"wb+",encoding = "utf-8") as f:
         with open(pathtrain,"wb+") as f:
-            asstring = strtocsv(data[train_index])[1:-1]
+            asstring = strtocsv(data[train_index])
             f.write(asstring)
         with open(pathtest,"wb+") as f:
-            asstring = strtocsv(data[test_index])[1:-1]
+            asstring = strtocsv(data[test_index])
             f.write(asstring)
         current += 1
 
