@@ -62,9 +62,9 @@ def strtocsv(data,delimiter = "\t"):
     result = ""
     for i in xrange(data.shape[0]):
         if len(data.shape) == 1:
-            result += "\n" + str(data[i]).translate(string.maketrans("",""), string.punctuation)
+            result += "\n" + str(data[i]) #.translate(string.maketrans("",""), string.punctuation)
             continue
-        cols = str(data[i,0]).translate(string.maketrans("",""), string.punctuation) #+ str(delimiter) + str(row[1])
+        cols = str(data[i,0]) #.translate(string.maketrans("",""), string.punctuation) #+ str(delimiter) + str(row[1])
         for j in xrange(1,data.shape[1]):
             cols += str(delimiter) + str(data[i,j])
         result += "\n" + cols
@@ -93,10 +93,10 @@ def prepDatForNer(data):
         pathtest = "../nlpdat/testdat" + str(current) + ".tsv"
         #with codecs.open(pathtrain,"wb+",encoding = "utf-8") as f:
         with open(pathtrain,"wb+") as f:
-            asstring = strtocsv(data[train_index])
+            asstring = strtocsv(data[train_index])[1:-1]
             f.write(asstring)
         with open(pathtest,"wb+") as f:
-            asstring = strtocsv(data[test_index,0])
+            asstring = strtocsv(data[test_index,0])[1:-1]
             f.write(asstring)
         current += 1
 
