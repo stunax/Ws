@@ -74,7 +74,7 @@ def strtocsv(data,delimiter = " "):
         #    cols += str(delimiter) + str(data[i,j])
         result += "\n\n" + cols
     #print result
-    result = result.lower()
+    result = result.lower().decode(errors="ignore")
     return result
 
 def convert(x):
