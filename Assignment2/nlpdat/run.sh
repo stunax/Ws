@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#skip lines that cannot be processed because of out of memory. Makes it REALLY slow.
+#skip lines that cannot be processed because of out of memory. Makes it REALLY slow. Read several lines, to increase speed a æottæe-
 buildbin(){
 	truncate -s 0 $2
 	truncate -s 0 $3
@@ -26,6 +26,7 @@ buildbin(){
   		read p
   		java -Xms5g -cp "../stanford-corenlp-full-2015-12-09/*" edu.stanford.nlp.sentiment.BuildBinarizedDataset -input $3 >> $2
 	done <$1
+	rm $3
 }
 
 
