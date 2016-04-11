@@ -68,26 +68,28 @@ The prediction is done using LASSO, and the web mined data originates from Googl
 \section{Methodology}
 To accomplish this assignment I split it into several smaller pieces. 
 \subsection*{Find texts}
-For all vaccines I used the texts provided by the assignment text. These text may not have been the best descriptions of the vaccines, but since I have not extra knowledge of vaccines, I decided that I would not be able to find better texts. 
+Two websites were used to get valid descriptions of the vaccines. One was sundhed.dk\cite{web2} using explanations for HPV\cite{sund0} and for MFR\cite{sund1}. 
+The other web site was SSI.dk. This is the official danish serum institue, and provides the text for HPV\cite{ssi0} and MFR\cite{ssi1}.
 
 A big plus about these text was, that they were made using layman terms. Those would be the same words, that potential buyers would use to search for vaccines, and thus would be what were were looking for.
 
+See appendix 1 for better explanation
 \subsection*{Tokenize}
 Before the texts can be of any use, all the stop words has to be removed, and I should attempt to remove all words not describing the vaccine at all. 
 
-The methods to do both of these things are provided in the assignment. First I convert all punctuation to white space. Then i split all words based on that white spaces, to get every word for it self.
-
-Now that I only use the two text provided, I can then extract all the words from on of the files, that is included in the other file.
-
-I remove punctuation using the character provided by pythons string library. This may unintentionally split some words that were meant to be one.
+The methods to do both of these things are: removing punctuation, removing stop words and remove duplicates. When all these basic tokenization operationns have completed on both vaccines descriptions for each vaccine, it is possible to collect the queries that exist in both description.
 
 \subsection*{Querys for Google}
-Now that I have each word, I get the data for each word. I then saved the result into one CSV file.
+Now that all queries have been extracted, each query were fed to Google Trends\cite{trends} using pytrends\cite{pytrends}. For each query Google Trends returned a report stating containing word frequencies from one date to another.
+
 
 I had the problem, that some word would be downloaded in weeks instead of months which was the desired format. To handle this i made a naive split only looking at the first yeah and the first month, and combining all the weeks starting in the same month. This way the data was converted to months at the cost of some searches ending up in the wrong month. The effect is however spread out through 5 years of data, and would probably be spread out almost evenly.
 
 \subsection*{Making the prediction}
-I know nothing of machine learning, so I decided to use some kind of linear model, and hope that the result is good enough. I decided on using lasso, because the sklearn library included cross validation for lasso. The function got run on  almost default parameters. The only exception is, that I set cv to 5, to get 5 folder cross validation, and I set positive = True because it does not really make sense for coefficients to be negative. I do that because searches for one thing does not really negatively impact searches for other things.
+
+
+
+
 
 \subsection{Naive method}To compare the result, I need another method to compare with. For this the mean of the target data is chosen. It assumes that every month, the vaccines sold is the same always, so it's not 
 \section{Findings}
@@ -109,6 +111,20 @@ It looks like the lasso function have done a decent job on both vaccines.
 
 \section{Conclusions}
 There are a few problems with the target data. All target data hat zeroes in the last three months. This could be due to missing information, and the algorithm to train on missing data, and thus increase the error when there is data.
+
+\section{Appendix 1}
+\subsection*{How the text got mined from websites}
+To get data from the web sites, I personally went to the web site, and extracted the relevant text. I copy pasted it into a text document, that was saved with utf-8 encoding.
+
+
+\section{Feedback}
+I have updated the Introduction section, to better reflect what is going on in the report according to the feedback.
+
+I have updated the methedology section to better explain what is going on. and created an appendix, where I give a more detailed explanation about what has been done to the data, if i could not explain it in a manner, that made sense to include in the report.
+
+Rewrote the tokenize subsection to reflect the changes requested.
+
+Rewrote some of the "queries for google" subsection, to better explain what was going on, but kept the part about problems in the returned answer.
 
 
 % The following two commands are all you need in the
