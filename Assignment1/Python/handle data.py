@@ -28,9 +28,9 @@ def load_json(path):
 
 
 def get_target_data(name):
-    files = glob.glob('../data/target/' + name+ "*.json")
-    data = map(load_json,files)
-    data = zip(files,data)
+    files = glob.glob('../data/target/' + name + "*.json")
+    data = map(load_json, files)
+    data = zip(files, data)
     return data
 
 def split_data(data,i,size,splitsize):
@@ -46,9 +46,9 @@ def split_data(data,i,size,splitsize):
     return newDat, newfold
 
 
-def cross_valid(data,target,name ,size =12,folder=5):
+def cross_valid(data,target):
 
-    model = linear_model.LassoCV(cv=5,positive=True)
+    model = linear_model.LassoCV(cv=5)
     model.fit(data, target)
     lassores = model
     #Other models!
@@ -58,25 +58,29 @@ def cross_valid(data,target,name ,size =12,folder=5):
     result = lassores #+ other models
     return result,
 
-def rmse(models,data,target,name):
+def rmse(models,data,target):
     result = ()
     for model in models:
-        inner =  np.array((model.predict(data) - target)**2)
+        inner = np.array((model.predict(data) - target)**2)
         outer = math.sqrt(np.sum(inner)/target.shape[0])
         result += outer,
     return result
 
 def main(name, target_name = ""):
-    words,dates,data = import_csv("../data/" + name + "dat.csv")
+    words, dates, data = import_csv("../data/" + name + "dat.csv")
     if target_name == "":
         target_name = name
     target_data = get_target_data(target_name)
 
     for vac, target in target_data:
         print vac
-        models = cross_valid(data,target,name)
-        res = rmse(models,data,target,name)
-        print res
+        models = cross_valid(data, target)
+        res = rmse(models, data, target)
+        #cprint res
+        #print target_data[0][1]
+        #print target
+        inner = (target - np.mean(target))**2
+        print res + (np.sqrt(np.sum(inner)/target.shape[0]),)
 
 
 

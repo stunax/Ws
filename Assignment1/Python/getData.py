@@ -94,14 +94,14 @@ def getData(words,name,google):
         urlver = word.encode("utf8")
         print u"Handling word: " + word
         #Make request
-        google.request_report( urlver, hl='dk', geo="DK", date="01/2011 "+str(monthsnum+1)+"m")
+        google.request_report( urlver, hl='dk', geo="DK", date="12/2010 "+str(monthsnum+1)+"m")
         #Get data as csv
         google.save_csv("../data/"+name+"/","temp")
         with open("../data/"+name+"/temp.csv") as f:
             wordfile = f.read()
             f.close()
-        ##Prepare format
-        #find all dates wit report
+        ## Prepare format
+        # find all dates wit report
         wordfile = re.findall("\n([0-9]+-[0-9]+)[0-9 \\-]*,([0-9]+)",wordfile)
         print wordfile
         wordfile = map(lambda x: x[0] + "," + x[1],wordfile)

@@ -48,16 +48,22 @@
 \numberofauthors{1} 
 \author{
 \alignauthor 
-Anonymous
+dpj482 Christian Edsberg Møllgaard
 }
 \maketitle
 
 
 
 \section{Introduction}
-It has been shown that there is a connection between certain words being searched locally  on Google, and the amount of vaccines being sold locally\cite{H2016}. The purpose this assignment is to replicate the findings as an exercise using much simpler methods. Then compare those findings, with the real results provided with the assignment. This assignment is done using words from several texts describing the vaccine. 
+In the previous study of Hansen et al.\cite{H2016}, we observed overall low error rate when predicting vaccination update using web mined and clinical data. This following study presents the same experiment, but only using web mined data from descriptions of the vaccines from ssi.dk\cite{web1} and sundhed.dk\cite{web2}. The work is done using 2 out of the 13 vaccines used in Hansen et al.\cite{H2016}. The web mines data is presented by the amount of times people Googled each word.
+
+%It has been shown that there is a connection between certain words being searched nationally on Google and clinical data, and the amount of vaccines being sold locally\cite{H2016}. This is done by . 
+
+%The purpose this assignment is to replicate the findings as an exercise using much simpler methods. Then compare those findings, with the real results provided with the assignment. This assignment is done using words from several texts describing the vaccine. 
 
 I chose the vaccines MMR-2(12) and HPV-1.
+
+The prediction is done using LASSO, and the web mined data originates from Google trends.\cite{trends}
 
 \section{Methodology}
 To accomplish this assignment I split it into several smaller pieces. 
@@ -83,17 +89,19 @@ I had the problem, that some word would be downloaded in weeks instead of months
 \subsection*{Making the prediction}
 I know nothing of machine learning, so I decided to use some kind of linear model, and hope that the result is good enough. I decided on using lasso, because the sklearn library included cross validation for lasso. The function got run on  almost default parameters. The only exception is, that I set cv to 5, to get 5 folder cross validation, and I set positive = True because it does not really make sense for coefficients to be negative. I do that because searches for one thing does not really negatively impact searches for other things.
 
+\subsection{Naive method}To compare the result, I need another method to compare with. For this the mean of the target data is chosen. It assumes that every month, the vaccines sold is the same always, so it's not 
 \section{Findings}
+I compare the result of the LASSO model with the naive mean result.
 My result is shown in table 1.
 \begin{table}[!h]
 \centering
 \caption{Results}
 \label{my-label}
-\begin{tabular}{|l|l|}
+\begin{tabular}{|l|l|l|}
 \hline
-vaccine   & rmse    \\ \hline
-HPV-1     & 12.723  \\ \hline
-MMR-2(12) & 27.544  \\ \hline
+vaccine   & rmse  & naive RMSE \\ \hline
+HPV-1     & 10.22 & 16.28 \\ \hline
+MMR-2(12) & 20.55 & 29.58 \\ \hline
 \end{tabular}
 \end{table}
 It looks like the lasso function have done a decent job on both vaccines. 
