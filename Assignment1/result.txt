@@ -1,0 +1,14 @@
+../data/target\HPV-1.json
+27.2641967173
+../data/target\HPV-2.json
+30.601696748
+../data/target\HPV-3.json
+21.2594925032
+../data/target\DiTeKiPol-1.json
+35.4519771313
+../data/target\DiTeKiPol-2.json
+38.0715368469
+../data/target\DiTeKiPol-3.json
+55.1155021852
+../data/target\DiTeKiPol-4.json
+25.2143015825

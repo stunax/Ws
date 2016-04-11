@@ -1,0 +1,24 @@
+
+report:
+Bad:
+I've been unable to find which vaccine you use exactly. Did you make predictions for HPV-1,HPV-2 or HPV-3?
+
+I do not know if it is necessary to explain LASSO and OSL. Maybe just provide a link, and explain the options you use.
+
+I do not agree, that you, based on two vaccines, can determine, that OLS is inadequate for vaccine predictions. I would remove that sentence, or give a better explanation, why you based on 2 out of 13 examples can deem it unworthy. 
+
+Good:
+Very well structured.
+
+Makes good use of references.
+
+code:
+Very well structured, and easy to read. 
+
+Something I am unsure of myself, but the goal is to predict the future amount of vaccines used. Should you not compare December searches with january results? Right now you take the data from january and predict the amount sold in january?
+
+Summary:
+Great report. It is easy to understand what you do and how you do it. The code is clean and easy to read, and I cannot find any unexplained result, except the one i mentioned above. 
+
+
+
